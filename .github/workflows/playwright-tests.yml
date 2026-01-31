@@ -26,13 +26,19 @@ jobs:
       run: npx playwright install --with-deps
     
     - name: Run Playwright tests
-      run: npm test
+      run: npx playwright test
       continue-on-error: true
     
     - name: Generate Allure report
       if: always()
       run: |
-        npx allure generate allure-results --output allure-report
+        if [ -d "allure-results" ]; then
+          npx allure generate allure-results --output allure-report
+        else
+          echo "No allure-results found, creating empty report"
+          mkdir -p allure-report
+          echo "<html><body>No test results available</body></html>" > allure-report/index.html
+        fi
     
     - name: Upload Allure report to GitHub Pages
       if: always()
