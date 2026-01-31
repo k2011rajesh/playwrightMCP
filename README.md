@@ -17,6 +17,7 @@ A comprehensive Playwright test automation suite with Jira/Xray integration, All
 - **API Testing:** REST API testing with GET, POST, PUT, DELETE operations
 - **Self-Healing:** Resilient locators with multi-strategy fallback and retry logic
 - **Allure Reports:** Beautiful interactive test reports with timeline and metrics
+- **Email Notifications:** Automated notifications to k2011.rajesh@gmail.com after each report generation
 - **Jira Integration:** Automatic test-case mapping with Jira issue keys
 - **Xray Upload:** Direct test result import to Jira via Xray Cloud API
 - **CI/CD Ready:** GitHub Actions workflow with automatic report publishing
@@ -66,7 +67,43 @@ npm run allure:report
 
 # Just open existing report
 npm run allure:open
+
+# Run tests, generate report, and send email notification
+npm run test:full
+
+# Send email for existing report
+npm run notify:email
 ```
+
+## 📧 Email Notifications
+
+Get automatic email notifications whenever tests complete and reports are generated!
+
+### Setup (One-Time)
+
+1. **Enable 2-Step Verification** on your Gmail account
+2. **Generate App Password** at https://myaccount.google.com/apppasswords
+3. **Add GitHub Secrets:**
+   - `EMAIL_FROM`: Your Gmail address
+   - `EMAIL_PASSWORD`: The generated app password  
+   - `EMAIL_TO`: Recipient email (optional)
+
+### Local Testing
+
+```bash
+# Set environment variables (PowerShell example)
+$env:EMAIL_FROM = "your-email@gmail.com"
+$env:EMAIL_PASSWORD = "your-app-password"
+$env:EMAIL_TO = "recipient@gmail.com"
+
+# Run tests and send email
+npm run test:full
+
+# Or just send email for existing report
+npm run notify:email
+```
+
+**→ Full guide: [EMAIL_NOTIFICATION_SETUP.md](EMAIL_NOTIFICATION_SETUP.md)**
 
 ## Test Cases Summary
 
@@ -120,6 +157,19 @@ git push origin feature/new-tests
 
 # Create Pull Request on GitHub
 # GitHub Actions will automatically run tests
+## npm Scripts
+
+```bash
+npm test                # Run all with JUnit
+npm run test:local      # Run all locally
+npm run test:api        # API tests only
+npm run test:single     # Single URL test
+npm run test:allure     # Tests + Allure report
+npm run test:full       # Tests + Allure + Email notification
+npm run allure:open     # Open Allure report
+npm run allure:report   # Tests + open report
+npm run upload:xray     # Upload to Xray
+npm run notify:email    # Send email for existing report
 ```
 
 ## GitHub Actions CI/CD
@@ -129,7 +179,9 @@ Automated testing on every push and pull request:
 - Installs dependencies
 - Runs all Playwright tests
 - Generates Allure report
+- Sends email notification (if configured)
 - Uploads artifacts
+- Deploys to GitHub Pages
 - Comments on PRs with results
 
 **Workflow file:** `.github/workflows/playwright-tests.yml`
@@ -144,19 +196,6 @@ export XRAY_CLIENT_SECRET=<your_client_secret>
 export XRAY_TEST_EXEC=PROJ-EXEC-1  # Optional
 
 npm run upload:xray
-```
-
-## npm Scripts
-
-```bash
-npm test                # Run all with JUnit
-npm run test:local      # Run all locally
-npm run test:api        # API tests only
-npm run test:single     # Single URL test
-npm run test:allure     # Tests + Allure
-npm run allure:open     # Open Allure report
-npm run allure:report   # Tests + open report
-npm run upload:xray     # Upload to Xray
 ```
 
 ## Project Structure
