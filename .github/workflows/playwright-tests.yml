@@ -9,8 +9,9 @@ on:
 jobs:
   test:
     permissions:
+      contents: write
+      pages: write
       issues: write
-      contents: read
     timeout-minutes: 60
     runs-on: ubuntu-latest
     
