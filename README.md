@@ -1,6 +1,15 @@
 # Playwright MCP - Test Automation Suite
 
+[![Playwright Tests](https://github.com/k2011rajesh/playwrightMCP/actions/workflows/playwright-tests.yml/badge.svg)](https://github.com/k2011rajesh/playwrightMCP/actions)
+[![Live Allure Report](https://img.shields.io/badge/Live%20Report-Allure-brightgreen)](https://k2011rajesh.github.io/playwrightMCP/allure/)
+
 A comprehensive Playwright test automation suite with Jira/Xray integration, Allure reporting, self-healing locators, and API testing.
+
+## 📊 Live Reports & Dashboards
+
+- **[View Latest Allure Report](https://k2011rajesh.github.io/playwrightMCP/allure/)** - Live interactive dashboard with all test results
+- **[GitHub Actions](https://github.com/k2011rajesh/playwrightMCP/actions)** - Real-time test execution and status
+- **Test Results:** 14 tests | ✅ 100% Pass Rate
 
 ## Features
 
@@ -10,8 +19,9 @@ A comprehensive Playwright test automation suite with Jira/Xray integration, All
 - **Allure Reports:** Beautiful interactive test reports with timeline and metrics
 - **Jira Integration:** Automatic test-case mapping with Jira issue keys
 - **Xray Upload:** Direct test result import to Jira via Xray Cloud API
-- **CI/CD Ready:** GitHub Actions workflow included
+- **CI/CD Ready:** GitHub Actions workflow with automatic report publishing
 - **Git Integration:** Complete version control setup
+- **GitHub Pages:** Live dashboard for test reports
 
 ## Quick Start
 
