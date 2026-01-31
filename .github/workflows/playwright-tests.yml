@@ -8,6 +8,9 @@ on:
 
 jobs:
   test:
+    permissions:
+      issues: write
+      contents: read
     timeout-minutes: 60
     runs-on: ubuntu-latest
     
@@ -81,28 +84,34 @@ jobs:
       uses: actions/github-script@v7
       with:
         script: |
-          const fs = require('fs');
-          const junitPath = './test-results/results.xml';
-          const reportUrl = `https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/allure/${{ github.run_number }}/index.html`;
-          if (fs.existsSync(junitPath)) {
-            const content = fs.readFileSync(junitPath, 'utf8');
-            const match = content.match(/tests="(\d+)"/);
-            const testCount = match ? match[1] : '?';
-            const passed = content.match(/failures="0"/);
-            const comment = passed ? 
-              `✅ All tests passed! (${testCount} tests)\n\n📊 [View Allure Report](${reportUrl})` : 
-              `❌ Some tests failed. Check Allure report in artifacts.\n\n📊 [View Allure Report](${reportUrl})`;
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: comment
-            });
-          }
-    
-    - name: Comment PR with test results
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: comment
-            });
-          }
+          (async () => {
+            try {
+              const fs = require('fs');
+              const junitPath = './test-results/results.xml';
+              const reportUrl = `https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/allure/${{ github.run_number }}/index.html`;
+              if (!fs.existsSync(junitPath)) {
+                console.log('No JUnit results found, skipping PR comment.');
+                return;
+              }
+              if (!context.issue || !context.issue.number) {
+                console.log('No PR context (issue number) available, skipping PR comment.');
+                return;
+              }
+              const content = fs.readFileSync(junitPath, 'utf8');
+              const match = content.match(/tests="(\d+)"/);
+              const testCount = match ? match[1] : '?';
+              const passed = content.match(/failures="0"/);
+              const comment = passed ?
+                `✅ All tests passed! (${testCount} tests)\n\n📊 [View Allure Report](${reportUrl})` :
+                `❌ Some tests failed. Check Allure report in artifacts.\n\n📊 [View Allure Report](${reportUrl})`;
+              await github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: comment
+              });
+              console.log('PR comment posted.');
+            } catch (err) {
+              console.error('Failed to post PR comment:', err);
+            }
+          })();
