@@ -87,9 +87,10 @@ jobs:
           if (fs.existsSync(junitPath)) {
             const content = fs.readFileSync(junitPath, 'utf8');
             const match = content.match(/tests="(\d+)"/);
+            const testCount = match ? match[1] : '?';
             const passed = content.match(/failures="0"/);
             const comment = passed ? 
-              `✅ All tests passed! (${match[1]} tests)\n\n📊 [View Allure Report](${reportUrl})` : 
+              `✅ All tests passed! (${testCount} tests)\n\n📊 [View Allure Report](${reportUrl})` : 
               `❌ Some tests failed. Check Allure report in artifacts.\n\n📊 [View Allure Report](${reportUrl})`;
             github.rest.issues.createComment({
               issue_number: context.issue.number,
