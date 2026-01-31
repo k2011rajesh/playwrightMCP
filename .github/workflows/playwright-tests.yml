@@ -56,22 +56,50 @@ jobs:
         path: test-results/
         retention-days: 30
     
-    - name: Comment PR with test results
+    - name: Deploy Allure Report to GitHub Pages
+      if: always()
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./allure-report
+        destination_dir: allure/${{ github.run_number }}
+    
+    - name: Send Email Notification
+      if: always()
+      run: |
+        export EMAIL_FROM="${{ secrets.EMAIL_FROM }}"
+        export EMAIL_PASSWORD="${{ secrets.EMAIL_PASSWORD }}"
+        export EMAIL_TO="${{ secrets.EMAIL_TO || 'k2011.rajesh@gmail.com' }}"
+        export REPORT_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/allure/${{ github.run_number }}/index.html"
+        export GITHUB_REPOSITORY="${{ github.repository }}"
+        export GITHUB_RUN_NUMBER="${{ github.run_number }}"
+        npm run notify:email
+      continue-on-error: true
+    
+    - name: Comment PR with test results and report link
       if: always() && github.event_name == 'pull_request'
       uses: actions/github-script@v7
       with:
         script: |
           const fs = require('fs');
           const junitPath = './test-results/results.xml';
+          const reportUrl = `https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/allure/${{ github.run_number }}/index.html`;
           if (fs.existsSync(junitPath)) {
             const content = fs.readFileSync(junitPath, 'utf8');
             const match = content.match(/tests="(\d+)"/);
             const passed = content.match(/failures="0"/);
             const comment = passed ? 
-              `✅ All tests passed! (${match[1]} tests)` : 
-              `❌ Some tests failed. Check Allure report in artifacts.`;
+              `✅ All tests passed! (${match[1]} tests)\n\n📊 [View Allure Report](${reportUrl})` : 
+              `❌ Some tests failed. Check Allure report in artifacts.\n\n📊 [View Allure Report](${reportUrl})`;
             github.rest.issues.createComment({
               issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+          }
+    
+    - name: Comment PR with test results
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: comment

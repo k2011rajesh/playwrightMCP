@@ -10,6 +10,7 @@
   "dependencies": {
     "axios": "^1.5.0",
     "form-data": "^4.0.0",
+    "nodemailer": "^7.0.13",
     "playwright": "^1.55.0",
     "playwright-core": "^1.55.0"
   },
@@ -18,10 +19,12 @@
     "test:local": "npx playwright test",
     "test:single": "npx playwright test tests/single.spec.ts --reporter=junit",
     "test:api": "npx playwright test tests/api.spec.ts",
-    "test:allure": "npx playwright test && allure generate allure-results -o allure-report --clean",
-    "allure:open": "allure open allure-report",
+    "test:allure": "npx playwright test && npx allure generate --output allure-report allure-results",
+    "allure:open": "npx allure open allure-report",
     "allure:report": "npm run test:allure && npm run allure:open",
-    "upload:xray": "node scripts/upload-xray.js"
+    "upload:xray": "node scripts/upload-xray.js",
+    "notify:email": "node scripts/send-email-notification.js",
+    "test:full": "npm run test:allure && npm run notify:email"
   },
   "keywords": [],
   "author": "",
