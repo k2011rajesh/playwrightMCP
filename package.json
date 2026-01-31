@@ -1,0 +1,30 @@
+{
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "allure": "^3.1.0",
+    "allure-playwright": "^3.4.5"
+  },
+  "name": "playwrightmcp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^1.5.0",
+    "form-data": "^4.0.0",
+    "playwright": "^1.55.0",
+    "playwright-core": "^1.55.0"
+  },
+  "scripts": {
+    "test": "npx playwright test --reporter=junit",
+    "test:local": "npx playwright test",
+    "test:single": "npx playwright test tests/single.spec.ts --reporter=junit",
+    "test:api": "npx playwright test tests/api.spec.ts",
+    "test:allure": "npx playwright test && allure generate allure-results -o allure-report --clean",
+    "allure:open": "allure open allure-report",
+    "allure:report": "npm run test:allure && npm run allure:open",
+    "upload:xray": "node scripts/upload-xray.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
