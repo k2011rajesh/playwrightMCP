@@ -2,7 +2,8 @@
   "devDependencies": {
     "@playwright/test": "^1.55.0",
     "allure": "^3.1.0",
-    "allure-playwright": "^3.4.5"
+    "allure-playwright": "^3.4.5",
+    "better-sqlite3": "^12.6.2"
   },
   "name": "playwrightmcp",
   "version": "1.0.0",
