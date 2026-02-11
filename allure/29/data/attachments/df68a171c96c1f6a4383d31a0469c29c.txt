@@ -1,0 +1,2 @@
+✓ NULL value handling verified
+✓ NULL values preserved during ETL

@@ -1,0 +1,11 @@
+✓ Testing message delivery semantics:
+  - atMostOnce: acks=0
+  - atLeastOnce: acks=1
+  - exactlyOnce: acks=all
+✓ Exactly-once producer configured: {
+  idempotence: true,
+  transactionalId: 'test-producer-1',
+  acksRequired: 'all'
+}
+✓ Verified 5 unique messages received
+✓ Exactly-once semantics verified

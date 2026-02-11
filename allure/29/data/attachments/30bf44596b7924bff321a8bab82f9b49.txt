@@ -1,0 +1,3 @@
+✓ Database initialized
+✓ User created with ID: 1
+✓ Record verified in database
