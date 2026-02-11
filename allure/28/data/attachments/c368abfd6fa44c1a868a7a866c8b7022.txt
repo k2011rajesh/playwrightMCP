@@ -1,0 +1,3 @@
+✓ ETL source and destination databases initialized
+✓ Extracted 3 employee records from source
+✓ Found 2 Engineering department employees

@@ -1,0 +1,2 @@
+✓ Row count matched: 3 records
+✓ Data integrity validation passed for all records

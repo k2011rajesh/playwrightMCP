@@ -1,0 +1,13 @@
+✓ Source department distribution: [
+  { department: null, count: 1 },
+  { department: 'Engineering', count: 2 },
+  { department: 'Marketing', count: 1 }
+]
+✓ Destination department distribution: [
+  { department: null, count: 1 },
+  { department: 'Engineering', count: 2 },
+  { department: 'Marketing', count: 1 }
+]
+✓ Source unique emails: 4
+✓ Destination unique emails: 4
+✓ All source records present in destination (full reconciliation)
