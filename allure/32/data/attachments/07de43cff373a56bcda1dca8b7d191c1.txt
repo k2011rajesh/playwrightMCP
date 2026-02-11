@@ -1,0 +1,1 @@
+✓ Load distribution - User: 2, Order: 2, Product: 2

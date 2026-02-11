@@ -1,0 +1,3 @@
+✓ Source schema validated with 8 columns
+✓ Column types validated
+✓ Table constraints verified

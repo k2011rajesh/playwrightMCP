@@ -1,0 +1,3 @@
+✓ MySQL: 4 customers, 4 orders
+✓ MongoDB: 4 customers, 4 orders
+✓ ETL migration validation passed

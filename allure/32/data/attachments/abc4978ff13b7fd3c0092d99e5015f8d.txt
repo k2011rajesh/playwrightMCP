@@ -1,0 +1,2 @@
+✓ Page title verification passed: HTML Tutorial
+✓ Found 924 navigation items (like desktop folder items)

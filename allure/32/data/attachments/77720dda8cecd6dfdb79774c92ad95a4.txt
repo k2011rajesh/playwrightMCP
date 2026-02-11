@@ -1,0 +1,5 @@
+✓ Retrieved partition metadata for topic
+✓ Total consumer lag across partitions: 150 messages
+✓ Partition 0: Leader=1, Lag=50
+✓ Partition 1: Leader=2, Lag=50
+✓ Partition 2: Leader=3, Lag=50

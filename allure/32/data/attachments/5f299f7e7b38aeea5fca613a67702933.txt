@@ -1,0 +1,7 @@
+✓ Topic creation request prepared: {
+  name: 'test-topic-501',
+  partitions: 3,
+  replication_factor: 1,
+  config: { 'retention.ms': '604800000', 'cleanup.policy': 'delete' }
+}
+✓ Topic created: test-topic-501 with 3 partitions

@@ -1,0 +1,3 @@
+✓ Initial state verified
+✓ Transaction committed successfully
+✓ Test database cleaned up
