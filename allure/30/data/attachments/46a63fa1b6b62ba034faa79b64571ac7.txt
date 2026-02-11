@@ -1,0 +1,3 @@
+✓ Duplicate emails found in source: 0
+✓ No duplicates in destination database
+✓ Email uniqueness constraint validated

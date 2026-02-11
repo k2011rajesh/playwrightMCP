@@ -1,0 +1,2 @@
+✓ Loading 3 records to destination
+✓ Successfully loaded 3 records to destination

@@ -1,0 +1,3 @@
+✓ Verified topic exists: test-topic-old
+✓ Topic deletion request sent
+✓ Topic deletion verified: test-topic-old

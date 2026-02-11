@@ -1,0 +1,3 @@
+✓ Desktop viewport (1920x1080) set successfully
+✓ Tablet viewport (768x1024) set successfully
+✓ Mobile viewport (375x667) set successfully
