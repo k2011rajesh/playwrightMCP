@@ -1,0 +1,2 @@
+✓ Record created for deletion test
+✓ Record deleted and verified
