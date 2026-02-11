@@ -1,0 +1,3 @@
+✓ Tab 1 opened: Wikipedia
+✓ Tab 2 opened: GitHub · Change is constant. GitHub keeps you ahead. · GitHub
+✓ Multi-tab management working

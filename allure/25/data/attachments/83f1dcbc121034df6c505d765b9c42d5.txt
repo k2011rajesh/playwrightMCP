@@ -1,0 +1,2 @@
+✓ Foreign key relationship verified: 2 tasks for user 6
+✓ Task filtering by status working correctly
