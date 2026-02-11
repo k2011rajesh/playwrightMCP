@@ -1,0 +1,19 @@
+✓ Source data quality metrics: {
+  total_records: 4,
+  unique_emails: 4,
+  non_null_departments: 3,
+  non_null_salaries: 3,
+  avg_salary: 83333.33333333333,
+  min_salary: 75000,
+  max_salary: 90000
+}
+✓ Destination data quality metrics: {
+  total_records: 4,
+  unique_emails: 4,
+  non_null_departments: 3,
+  non_null_salaries: 3,
+  avg_salary: 83333.33333333333,
+  min_salary: 75000,
+  max_salary: 90000
+}
+✓ Data quality metrics validated
