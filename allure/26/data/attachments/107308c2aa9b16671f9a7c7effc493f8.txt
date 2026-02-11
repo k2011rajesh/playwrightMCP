@@ -1,0 +1,10 @@
+✓ Total tasks in database: 5
+✓ Aggregation query successful: [
+  { id: 7, name: 'Frank Miller', task_count: 2 },
+  { id: 8, name: 'Grace Lee', task_count: 1 }
+]
+✓ Task status distribution: [
+  { status: 'completed', count: 2 },
+  { status: 'in_progress', count: 1 },
+  { status: 'pending', count: 2 }
+]

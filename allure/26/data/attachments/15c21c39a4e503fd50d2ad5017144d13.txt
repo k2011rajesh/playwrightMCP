@@ -1,0 +1,7 @@
+✓ Testing error scenarios:
+  - Invalid topic: Topic does not exist (HTTP 404)
+  - Producer timeout: Request timeout (HTTP 408)
+  - Broker unavailable: Broker not available (HTTP 503)
+  - Invalid message format: Invalid JSON payload (HTTP 400)
+✓ Operation succeeded on attempt 1
+✓ Error handling and retry logic verified

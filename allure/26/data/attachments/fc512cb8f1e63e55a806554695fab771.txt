@@ -1,0 +1,8 @@
+✓ Starting Kafka integration test
+✓ Created 3 producers
+✓ Created 2 consumer groups
+✓ Publishing 300 total messages
+✓ Processed 300 messages by consumers
+✓ All messages processed correctly (end-to-end verified)
+✓ Message integrity: verified
+✓ Integration test completed successfully
