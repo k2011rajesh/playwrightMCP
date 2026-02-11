@@ -1,0 +1,1 @@
+✓ Correctly received 404 for non-existent resource

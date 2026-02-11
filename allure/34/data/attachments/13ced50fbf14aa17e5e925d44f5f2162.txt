@@ -1,0 +1,3 @@
+✓ Consumer group created: test-consumer-group-504
+✓ Consumed 3 messages from topic
+✓ Message ordering verified (offset sequence)

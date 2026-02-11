@@ -1,0 +1,3 @@
+✓ Message publishing to topic: test-topic-501
+✓ Message published successfully with key: user-123
+✓ Payload verified: login

@@ -1,0 +1,4 @@
+✓ All microservices healthy:
+  - User Service: 7 requests
+  - Order Service: 3 requests
+  - Product Service: 3 requests

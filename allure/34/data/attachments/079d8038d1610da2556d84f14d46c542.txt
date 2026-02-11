@@ -1,0 +1,4 @@
+✓ Container orchestration verified:
+  - user-service: running on port 3001
+  - order-service: running on port 3002
+  - product-service: running on port 3003
