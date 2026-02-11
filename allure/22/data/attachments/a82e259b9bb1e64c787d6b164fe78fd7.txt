@@ -1,0 +1,2 @@
+✓ Found element using strategy: link-text
+✓ Self-healing found form authentication link
